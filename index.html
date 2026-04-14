@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORGANA — Power to people. Wisdom in-house.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF; --surface: #F7F7F5; --border: #E8E8E5; --border-strong: #D0D0CC;
+    --text: #0C0C0A; --text-muted: #6B6B65; --text-faint: #9C9C95;
+    --accent: #6B5CE7; --accent-light: #EEF0FF; --accent-dark: #4A3DB5;
+    --coral: #E85D40; --teal: #1A9E75; --amber: #D4830F;
+    --font-d: 'Fraunces', Georgia, serif; --font-b: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --r: 10px; --rl: 16px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-b); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 2.5rem; height: 58px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--font-d); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-badge { display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-light); padding: 4px 12px; border-radius: 999px; text-decoration: none; border: 1px solid rgba(107,92,231,0.2); white-space: nowrap; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
+  .sec { padding: 64px 0; }
+  .fdiv { border: none; border-top: 1px solid var(--border); margin: 0; }
+  .slbl { display: inline-block; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.875rem; }
+  h1, h2, h3 { font-family: var(--font-d); letter-spacing: -0.025em; line-height: 1.15; }
+  h1 { font-size: clamp(40px, 5vw, 66px); font-weight: 700; }
+  h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 500; }
+  h3 { font-size: 19px; font-weight: 500; }
+  p { color: var(--text-muted); font-size: 15px; line-height: 1.8; }
+
+  /* HERO */
+  #hero { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: calc(100vh - 58px); max-width: 1080px; margin: 0 auto; padding: 56px 2.5rem; border-bottom: 1px solid var(--border); }
+  .h-ey { display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); border: 1px solid var(--border-strong); padding: 4px 13px; border-radius: 999px; margin-bottom: 1.375rem; }
+  .h-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+  .h-h1 { color: var(--text); margin-bottom: 1.125rem; }
+  .h-h1 em { font-style: italic; color: var(--accent); white-space: nowrap; }
+  .h-sub { font-size: 16.5px; line-height: 1.75; color: var(--text-muted); max-width: 460px; }
+  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .h-ey { animation: fu 0.5s ease both; }
+  .h-h1 { animation: fu 0.5s 0.08s ease both; }
+  .h-sub { animation: fu 0.5s 0.16s ease both; }
+  .h-art { animation: fu 0.6s 0.12s ease both; display: flex; align-items: center; justify-content: center; }
+
+  /* PROBLEM */
+  .pg { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; margin: 2rem 0; }
+  .pc { background: var(--bg); padding: 1.625rem; }
+  .pi { width: 32px; height: 32px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 14px; margin-bottom: 0.75rem; }
+  .ic { background: #FEF0ED; } .ia { background: #FEF5E7; } .ip { background: var(--accent-light); }
+  .pc h3 { font-size: 14px; font-weight: 600; font-family: var(--font-b); margin-bottom: 0.375rem; color: var(--text); }
+  .pc p { font-size: 13px; }
+  .sr { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; }
+  .sb { background: var(--surface); padding: 1.5rem 1.625rem; text-align: center; }
+  .sn { font-family: var(--font-d); font-size: 34px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); display: block; margin-bottom: 0.2rem; }
+  .sb p { font-size: 12.5px; }
+
+  /* CHALLENGE (now after problem) */
+  .ch-outer { background: var(--surface); padding: 64px 2.5rem; }
+  .ch-inner { max-width: 1080px; margin: 0 auto; }
+  .chg { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.875rem 0; }
+  .chc { background: var(--bg); border: 1px solid var(--border); border-radius: var(--rl); padding: 1.625rem; }
+  .chh { display: flex; align-items: center; gap: 9px; margin-bottom: 1rem; }
+  .av { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+  .avb { background: var(--accent-light); color: var(--accent-dark); } .avu { background: #FEF0ED; color: #C0392B; }
+  .chr { font-size: 14px; font-weight: 600; color: var(--text); } .chs { font-size: 12px; color: var(--text-muted); }
+  .chi { display: flex; gap: 8px; align-items: flex-start; padding: 5px 0; font-size: 13px; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+  .chi:last-child { border-bottom: none; }
+  .cii { font-size: 11px; margin-top: 3px; flex-shrink: 0; }
+  .cf { color: var(--coral); } .cw { color: var(--teal); }
+  .wl { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal); margin: 0.875rem 0 0.5rem; padding-top: 0.875rem; border-top: 1px solid var(--border); }
+  .rb { background: var(--bg); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 var(--r) var(--r) 0; padding: 1.25rem; }
+  .rb p { font-size: 13.5px; line-height: 1.75; color: var(--text-muted); }
+  .rb strong { color: var(--text); font-weight: 600; }
+
+  /* SOLUTION — 3 pillars */
+  .pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; margin: 2rem 0; }
+  .pillar { background: var(--bg); padding: 2rem 1.625rem; }
+  .pillar.dark { background: var(--text); }
+  .pnum { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .pillar.dark .pnum { color: rgba(255,255,255,0.4); }
+  .pttl { font-size: 17px; font-weight: 500; font-family: var(--font-d); color: var(--text); margin-bottom: 0.625rem; letter-spacing: -0.015em; }
+  .pillar.dark .pttl { color: #fff; }
+  .pdesc { font-size: 13px; line-height: 1.75; color: var(--text-muted); }
+  .pillar.dark .pdesc { color: rgba(255,255,255,0.6); }
+  .plist { margin-top: 1rem; display: flex; flex-direction: column; gap: 0; }
+  .pli { display: flex; gap: 7px; align-items: flex-start; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; color: var(--text-muted); }
+  .pli:last-child { border-bottom: none; }
+  .pillar.dark .pli { border-bottom-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55); }
+  .pli-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 7px; }
+  .pillar.dark .pli-dot { background: rgba(255,255,255,0.3); }
+  .civ-sub { display: grid; grid-template-columns: repeat(5,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; margin-top: 1rem; }
+  .civ-c { background: var(--bg); padding: 1rem 0.875rem; }
+  .civ-code { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.375rem; }
+  .civ-name { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; font-family: var(--font-b); }
+  .civ-d { font-size: 11px; line-height: 1.6; color: var(--text-muted); }
+  .sl-term { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 7px; padding: 0.75rem 1rem; margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 11px; color: rgba(255,255,255,0.68); line-height: 1.85; }
+  .d { color: rgba(255,255,255,0.3); } .g { color: #6EE7B7; } .pu { color: #BDB5FF; }
+  .gam-sub { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; margin-top: 1rem; }
+  .gam-c { background: var(--bg); padding: 1rem 0.875rem; }
+  .gam-t { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; font-family: var(--font-b); }
+  .gam-d { font-size: 11px; line-height: 1.6; color: var(--text-muted); }
+
+  /* MCP STRIP */
+  .mcp-strip { background: var(--surface); border: 1px solid var(--border); border-radius: var(--rl); padding: 1.25rem 2rem; margin-top: 1.875rem; }
+  .mcp-lbl { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.875rem; }
+  .mcp-logos { display: flex; flex-wrap: wrap; gap: 8px; }
+  .mcp-tag { font-size: 12px; font-weight: 500; color: var(--text-muted); background: var(--bg); border: 1px solid var(--border); padding: 4px 12px; border-radius: 999px; }
+
+  /* COMPETITIVE */
+  .ct-w { overflow-x: auto; margin: 2rem 0; border: 1px solid var(--border); border-radius: var(--rl); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 540px; }
+  thead th { text-align: left; padding: 11px 14px; font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); background: var(--surface); border-bottom: 1px solid var(--border); }
+  tbody td { padding: 11px 14px; border-bottom: 1px solid var(--border); color: var(--text-muted); font-size: 13px; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr.or td { background: var(--accent-light); font-weight: 600; color: var(--accent-dark); }
+  .cr td { background: var(--surface); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); padding: 7px 14px; }
+  .ck { color: var(--teal); font-weight: 700; } .cx { color: #D1D1CC; } .ch { color: var(--amber); }
+  .ci { background: var(--surface); border: 1px solid var(--border); border-radius: var(--rl); padding: 1.25rem 1.625rem; font-size: 13.5px; color: var(--text-muted); line-height: 1.75; }
+  .ci strong { color: var(--text); font-weight: 600; }
+
+  /* PRICING */
+  .prg { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; margin: 2rem 0; }
+  .prc { background: var(--bg); padding: 1.5rem 1.25rem; display: flex; flex-direction: column; }
+  .prc.ft { background: var(--text); }
+  .prt { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.5rem; }
+  .prc.ft .prt { color: rgba(255,255,255,0.35); }
+  .prp { font-family: var(--font-d); font-size: 32px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); line-height: 1; margin-bottom: 0.2rem; }
+  .prc.ft .prp { color: #fff; }
+  .prp span { font-size: 13px; font-weight: 400; font-family: var(--font-b); }
+  .pra { font-size: 11px; color: var(--text-faint); margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .prc.ft .pra { color: rgba(255,255,255,0.28); border-bottom-color: rgba(255,255,255,0.1); }
+  .prf { font-size: 12px; color: var(--text-muted); padding: 4px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 5px; }
+  .prf:last-child { border-bottom: none; }
+  .prc.ft .prf { color: rgba(255,255,255,0.55); border-bottom-color: rgba(255,255,255,0.08); }
+  .pd { width: 4px; height: 4px; border-radius: 50%; background: var(--border-strong); flex-shrink: 0; }
+  .prc.ft .pd { background: rgba(255,255,255,0.2); }
+  .prper { margin-top: auto; padding-top: 0.75rem; font-size: 11px; color: var(--text-faint); }
+  .prc.ft .prper { color: rgba(255,255,255,0.28); }
+  .mr { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; }
+  .mb { background: var(--surface); padding: 1.25rem 1.5rem; }
+  .mv { font-family: var(--font-d); font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); margin-bottom: 0.2rem; }
+  .mb p { font-size: 12px; }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; text-align: center; }
+  .fl { font-family: var(--font-d); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); display: block; margin-bottom: 0.375rem; }
+  .ft { font-family: var(--font-d); font-style: italic; font-size: 14px; color: var(--text-muted); margin-bottom: 0.875rem; }
+  .fm { font-size: 12px; color: var(--text-faint); }
+  .fm a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 800px) {
+    nav { padding: 0 1.25rem; } .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; padding: 40px 1.25rem; min-height: auto; } .h-art { display: none; }
+    .wrap { padding: 0 1.25rem; } .ch-outer { padding: 50px 1.25rem; }
+    .pg,.sr,.chg,.pillars,.civ-sub,.gam-sub,.prg,.mr { grid-template-columns: 1fr; }
+    .sec { padding: 50px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">ORGANA</a>
+  <ul class="nav-links">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#competitive">Why ORGANA</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+  </ul>
+  <a href="https://organa.zent-agency.com" target="_blank" class="nav-badge">
+    <span style="font-size:13px;">✦</span> Built with Claude
+  </a>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div>
+    <div class="h-ey"><div class="h-dot"></div>Anthropic Hackathon 2026 · LATAM</div>
+    <h1 class="h-h1">Power to people.<br><em style="white-space:nowrap;">Wisdom in-house.</em></h1>
+    <p class="h-sub">ORGANA turns your org chart into a network of AI agents that learn how your team works, talk to each other, coordinate in real time, and keep that knowledge when people move on.</p>
+  </div>
+  <div class="h-art">
+    <!-- PLACEHOLDER — image option goes here after selection -->
+    <svg viewBox="0 0 380 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;">
+      <circle cx="190" cy="160" r="135" fill="#F0EFFE" opacity="0.45"/>
+      <!-- Person 1 left -->
+      <ellipse cx="72" cy="124" rx="24" ry="26" fill="#FDDCB5"/>
+      <ellipse cx="72" cy="105" rx="24" ry="11" fill="#2C1810"/>
+      <rect x="48" y="105" width="7" height="30" rx="3.5" fill="#2C1810"/>
+      <rect x="89" y="105" width="7" height="30" rx="3.5" fill="#2C1810"/>
+      <circle cx="64" cy="122" r="3.2" fill="#2C1810"/>
+      <circle cx="80" cy="122" r="3.2" fill="#2C1810"/>
+      <path d="M65 132 Q72 138 79 132" stroke="#2C1810" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <rect x="50" y="152" width="44" height="58" rx="13" fill="#1A9E75"/>
+      <rect x="38" y="157" width="14" height="36" rx="7" fill="#1A9E75"/>
+      <rect x="94" y="157" width="14" height="36" rx="7" fill="#1A9E75"/>
+      <ellipse cx="45" cy="195" rx="9" ry="7" fill="#FDDCB5"/>
+      <ellipse cx="101" cy="195" rx="9" ry="7" fill="#FDDCB5"/>
+      <!-- Agent center -->
+      <rect x="152" y="96" width="76" height="76" rx="20" fill="#6B5CE7"/>
+      <rect x="164" y="112" width="52" height="36" rx="10" fill="#4A3DB5"/>
+      <rect x="170" y="120" width="14" height="11" rx="4" fill="#BDB5FF"/>
+      <rect x="196" y="120" width="14" height="11" rx="4" fill="#BDB5FF"/>
+      <path d="M172 139 Q190 148 208 139" stroke="#BDB5FF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <line x1="190" y1="96" x2="190" y2="82" stroke="#6B5CE7" stroke-width="3"/>
+      <circle cx="190" cy="77" r="7" fill="#6B5CE7"/>
+      <circle cx="190" cy="77" r="4" fill="#BDB5FF"/>
+      <rect x="158" y="174" width="64" height="56" rx="13" fill="#534AB7"/>
+      <line x1="172" y1="188" x2="204" y2="188" stroke="#BDB5FF" stroke-width="1.5" opacity="0.5"/>
+      <line x1="172" y1="199" x2="198" y2="199" stroke="#BDB5FF" stroke-width="1.5" opacity="0.5"/>
+      <circle cx="206" cy="199" r="3" fill="#BDB5FF" opacity="0.5"/>
+      <line x1="172" y1="210" x2="202" y2="210" stroke="#BDB5FF" stroke-width="1.5" opacity="0.5"/>
+      <!-- Person 2 right -->
+      <ellipse cx="308" cy="124" rx="24" ry="26" fill="#F5C4B3"/>
+      <ellipse cx="308" cy="106" rx="24" ry="11" fill="#3D2B1F"/>
+      <circle cx="300" cy="122" r="3.2" fill="#3D2B1F"/>
+      <circle cx="316" cy="122" r="3.2" fill="#3D2B1F"/>
+      <path d="M301 132 Q308 138 315 132" stroke="#3D2B1F" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <rect x="286" y="152" width="44" height="58" rx="13" fill="#E85D40"/>
+      <rect x="274" y="157" width="14" height="36" rx="7" fill="#E85D40"/>
+      <rect x="330" y="157" width="14" height="36" rx="7" fill="#E85D40"/>
+      <ellipse cx="281" cy="195" rx="9" ry="7" fill="#F5C4B3"/>
+      <ellipse cx="337" cy="195" rx="9" ry="7" fill="#F5C4B3"/>
+      <!-- Connections -->
+      <line x1="108" y1="185" x2="152" y2="185" stroke="#BDB5FF" stroke-width="1.8" stroke-dasharray="4 3" opacity="0.6"/>
+      <line x1="228" y1="185" x2="274" y2="185" stroke="#BDB5FF" stroke-width="1.8" stroke-dasharray="4 3" opacity="0.6"/>
+      <!-- Ground -->
+      <rect x="40" y="235" width="300" height="3" rx="1.5" fill="#E8E8E5"/>
+      <!-- Badges -->
+      <rect x="50" y="72" width="46" height="18" rx="9" fill="#EAFAF3"/>
+      <text x="73" y="85" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9.5" font-weight="700" fill="#0E6E42">Score 92</text>
+      <rect x="256" y="68" width="52" height="18" rx="9" fill="#EEF0FF"/>
+      <text x="282" y="81" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9.5" font-weight="700" fill="#4A3DB5">Shadow</text>
+      <rect x="152" y="46" width="76" height="18" rx="9" fill="#EAFAF3"/>
+      <text x="190" y="59" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9.5" font-weight="700" fill="#0E6E42">Autonomous ✓</text>
+      <text x="190" y="272" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#9C9C95">Humans &amp; agents, working as one</text>
+    </svg>
+  </div>
+</div>
+
+<hr class="fdiv">
+
+<!-- PROBLEM -->
+<div id="problem"><div class="wrap"><div class="sec">
+  <span class="slbl">The Problem</span>
+  <h2>Knowledge that walks out the door</h2>
+  <p style="max-width:560px;margin-top:0.625rem;">Every business runs on knowledge inside people's heads — not in systems, not in manuals. And that knowledge moves every time a person does.</p>
+  <div class="pg">
+    <div class="pc">
+      <div class="pi ic">↗</div>
+      <h3>People move. Knowledge disappears.</h3>
+      <p>Resignations, promotions, outsourcing, relocation. Every transition takes months of accumulated know-how — the workarounds, shortcuts, and unwritten rules that made things work.</p>
+    </div>
+    <div class="pc">
+      <div class="pi ia">◎</div>
+      <h3>Owners can't see inside their operation.</h3>
+      <p>They know outcomes — not processes. What does Ana in Finance actually do every Tuesday? Nobody knows, because nobody ever had to write it down.</p>
+    </div>
+    <div class="pc">
+      <div class="pi ip">⟲</div>
+      <h3>AI workflows leave with employees too.</h3>
+      <p>Employees build personal AI routines — custom agents, prompt libraries, automated workflows. When they leave, those go with them. A new version of the old problem.</p>
+    </div>
+  </div>
+  <div class="sr">
+    <div class="sb"><span class="sn">$1.5T</span><p>lost annually to knowledge gaps in the global workforce</p></div>
+    <div class="sb"><span class="sn">42%</span><p>of role-specific knowledge never documented before someone leaves</p></div>
+    <div class="sb"><span class="sn">6–9 mo</span><p>to fully restore a mid-level employee's operational output</p></div>
+  </div>
+</div></div></div>
+
+<hr class="fdiv">
+
+<!-- CHALLENGE (after problem) -->
+<div id="challenge" class="ch-outer">
+  <div class="ch-inner">
+    <span class="slbl">The Challenge</span>
+    <h2>Two audiences.<br>Two fears. One product.</h2>
+    <p style="max-width:520px;margin-top:0.625rem;">Deploying ORGANA requires convincing two people with opposing interests. We know this tension exists — and we've designed the product to resolve it.</p>
+    <div class="chg">
+      <div class="chc">
+        <div class="chh"><div class="av avb">BU</div><div><div class="chr">The Buyer</div><div class="chs">SME founder · Decides and pays</div></div></div>
+        <div class="chi"><span class="cii cf">✕</span>2–3 people hold the entire operation together</div>
+        <div class="chi"><span class="cii cf">✕</span>Can't take a real vacation without things breaking</div>
+        <div class="chi"><span class="cii cf">✕</span>Onboarding takes months, delivers inconsistently</div>
+        <div class="chi"><span class="cii cf">✕</span>Knows AI exists but can't apply it without IT</div>
+        <div class="wl">What wins them</div>
+        <div class="chi"><span class="cii cw">✓</span>Business runs even when people move on</div>
+        <div class="chi"><span class="cii cw">✓</span>Full visibility into how the operation works</div>
+        <div class="chi"><span class="cii cw">✓</span>AI applied to their workflows — no IT team needed</div>
+      </div>
+      <div class="chc">
+        <div class="chh"><div class="av avu">EM</div><div><div class="chr">The User</div><div class="chs">Key employee · Must adopt ORGANA</div></div></div>
+        <div class="chi"><span class="cii cf">✕</span>"This will replace me"</div>
+        <div class="chi"><span class="cii cf">✕</span>"My boss is using this to spy on me"</div>
+        <div class="chi"><span class="cii cf">✕</span>"If I share what I know, I become expendable"</div>
+        <div class="chi"><span class="cii cf">✕</span>"It'll do my job badly and I'll get the blame"</div>
+        <div class="wl">What wins them</div>
+        <div class="chi"><span class="cii cw">✓</span>Repetitive tasks go to the agent — less grunt work</div>
+        <div class="chi"><span class="cii cw">✓</span>Their expertise gets recognized and preserved</div>
+        <div class="chi"><span class="cii cw">✓</span>They learn to work with AI — and become more valuable</div>
+      </div>
+    </div>
+    <div class="rb">
+      <p><strong>How the Trust Gradient resolves the tension:</strong> The agent starts in Shadow Mode — proposing without acting. The employee approves or rejects every suggestion, giving them control. Shadow Mode is not a monitoring layer. It's a learning layer, and the employee is the one teaching it.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="fdiv">
+
+<!-- SOLUTION — 3 pillars -->
+<div id="solution"><div class="wrap"><div class="sec">
+  <span class="slbl">The Solution</span>
+  <h2>Three pillars that make<br>ORGANA different</h2>
+  <p style="max-width:520px;margin-top:0.625rem;">ORGANA is not a chatbot and not a wiki. It's an operating layer for your entire organization — built on three interconnected pillars.</p>
+
+  <div class="pillars">
+    <!-- Pillar 1: Civilization Layer — concept only -->
+    <div class="pillar">
+      <div class="pnum">Pillar 01</div>
+      <h3 class="pttl">Agents that organize themselves</h3>
+      <p class="pdesc">ORGANA doesn't just deploy agents — it builds an organization. Agents communicate with each other, run structured meetings, track their own reputation, audit failures, and retrain when they underperform.</p>
+      <div style="background:rgba(107,92,231,0.07);border-radius:8px;padding:0.875rem 1rem;margin-top:1.125rem;font-size:12.5px;color:var(--text-muted);line-height:1.7;">
+        Unlike any other tool, ORGANA agents coordinate as a team — they delegate tasks, escalate blockers, detect bottlenecks, and improve continuously without human intervention.
+      </div>
+    </div>
+
+    <!-- Pillar 2: Screen Learning -->
+    <div class="pillar dark">
+      <div class="pnum">Pillar 02</div>
+      <h3 class="pttl">Record once.<br>The agent handles it.</h3>
+      <p class="pdesc">No manuals, no forms. Employees record task sessions — start, work, stop. The agent learns the real workflow: sequence, decisions, exceptions. This tacit knowledge is exactly what gets lost when people leave.</p>
+      <div class="sl-term">
+        <div><span class="d">▸ Session:</span> <span class="g">Weekly sales report</span></div>
+        <div><span class="d">  Excel → filter → sum → PDF → CEO</span></div>
+        <div style="margin-top:4px;"><span class="pu">Task learned. Now automated. ✓</span></div>
+      </div>
+      <div class="plist" style="margin-top:1.125rem;">
+        <div class="pli"><span class="pli-dot"></span>Captures what people DO, not what they say</div>
+        <div class="pli"><span class="pli-dot"></span>No extra effort — record and keep working</div>
+        <div class="pli"><span class="pli-dot"></span>Knowledge owned by the company, not the employee</div>
+      </div>
+    </div>
+
+    <!-- Pillar 3: Gamification — simple bullet list -->
+    <div class="pillar">
+      <div class="pnum">Pillar 03</div>
+      <h3 class="pttl">Adoption by design, not by mandate.</h3>
+      <p class="pdesc">The biggest risk for any AI product is employee resistance. ORGANA turns adoption into a game — with visible scores, benchmarks, and social recognition built into the product.</p>
+      <div class="plist" style="margin-top:1.125rem;">
+        <div class="pli"><span class="pli-dot"></span>Team adoption scores — visible and competitive inside the company</div>
+        <div class="pli"><span class="pli-dot"></span>Cross-company benchmarks — compare your teams vs industry peers</div>
+        <div class="pli"><span class="pli-dot"></span>Agent Feed — employees share what they automated</div>
+        <div class="pli"><span class="pli-dot"></span>Badges earned as agents get trained and milestones are hit</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MCP integrations -->
+  <div class="mcp-strip">
+    <div class="mcp-lbl">Connects with the tools your team already uses</div>
+    <div class="mcp-logos">
+      <span class="mcp-tag">Gmail</span>
+      <span class="mcp-tag">Google Drive</span>
+      <span class="mcp-tag">Google Calendar</span>
+      <span class="mcp-tag">Slack</span>
+      <span class="mcp-tag">Notion</span>
+      <span class="mcp-tag">Figma</span>
+      <span class="mcp-tag">Supabase</span>
+      <span class="mcp-tag">Stripe</span>
+      <span class="mcp-tag">Cloudflare</span>
+    </div>
+  </div>
+</div></div></div>
+
+<hr class="fdiv">
+
+<!-- COMPETITIVE -->
+<div id="competitive"><div class="wrap"><div class="sec">
+  <span class="slbl">Why Not the Alternatives</span>
+  <h2>Every competitor requires<br>someone to stop and document.</h2>
+  <p style="max-width:520px;margin-top:0.625rem;">Wikis, SOPs, videos — all need intentional effort. ORGANA captures knowledge while people work. And unlike any alternative, the output is an agent — not a document.</p>
+  <div class="ct-w">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Passive capture</th><th>Creates agents</th><th>Company-owned</th><th>Role-specific</th><th>SME-ready</th></tr>
+      </thead>
+      <tbody>
+        <tr class="cr"><td colspan="6">Knowledge management</td></tr>
+        <tr><td>Notion / Confluence</td><td><span class="cx">—</span></td><td><span class="cx">—</span></td><td><span class="ch">~</span></td><td><span class="cx">—</span></td><td><span class="ch">~</span></td></tr>
+        <tr class="cr"><td colspan="6">Process documentation</td></tr>
+        <tr><td>Loom</td><td><span class="cx">—</span></td><td><span class="cx">—</span></td><td><span class="ch">~</span></td><td><span class="cx">—</span></td><td><span class="ck">✓</span></td></tr>
+        <tr><td>Scribe</td><td><span class="ch">~</span></td><td><span class="cx">—</span></td><td><span class="ch">~</span></td><td><span class="cx">—</span></td><td><span class="ck">✓</span></td></tr>
+        <tr class="cr"><td colspan="6">Generic AI — the hidden risk</td></tr>
+        <tr><td>ChatGPT / Claude</td><td><span class="cx">—</span></td><td><span class="ch">~</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td><td><span class="ck">✓</span></td></tr>
+        <tr><td>Employee-built agents</td><td><span class="cx">—</span></td><td><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="ch">~</span></td><td><span class="ck">✓</span></td></tr>
+        <tr class="cr"><td colspan="6">Enterprise AI</td></tr>
+        <tr><td>Microsoft Copilot</td><td><span class="cx">—</span></td><td><span class="ch">~</span></td><td><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
+        <tr class="or"><td>ORGANA ✦</td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ci">
+    <strong>The switching cost advantage:</strong> Every week of screen learning deepens the agent's knowledge of that specific company's operation. An agent that's observed Ana in Finance for three months can't be replicated by a competitor starting from zero. The longer ORGANA runs, the harder it is to replace.
+  </div>
+</div></div></div>
+
+<hr class="fdiv">
+
+<!-- PRICING -->
+<div id="pricing"><div class="wrap"><div class="sec">
+  <span class="slbl">Business Model & Pricing</span>
+  <h2>Per active agent.<br>Scales with your team.</h2>
+  <p style="max-width:520px;margin-top:0.625rem;">Start with your most critical roles. Expand as agents prove their value. Land-and-expand built into the product.</p>
+  <div class="prg">
+    <div class="prc">
+      <div class="prt">Starter</div>
+      <div class="prp">$75<span>/mo</span></div>
+      <div class="pra">ARR ~$900</div>
+      <div class="prf"><span class="pd"></span>5 active agents</div>
+      <div class="prf"><span class="pd"></span>20 recordings/agent</div>
+      <div class="prf"><span class="pd"></span>30 queries/agent</div>
+      <div class="prf"><span class="pd"></span>Shadow mode only</div>
+      <div class="prper">$15 / agent</div>
+    </div>
+    <div class="prc ft">
+      <div class="prt">★ Small</div>
+      <div class="prp">$195<span style="color:rgba(255,255,255,0.38);">/mo</span></div>
+      <div class="pra">ARR ~$2,340</div>
+      <div class="prf"><span class="pd"></span>15 active agents</div>
+      <div class="prf"><span class="pd"></span>40 recordings/agent</div>
+      <div class="prf"><span class="pd"></span>60 queries/agent</div>
+      <div class="prf"><span class="pd"></span>Shadow + Assisted mode</div>
+      <div class="prper">$13 / agent</div>
+    </div>
+    <div class="prc">
+      <div class="prt">Growth</div>
+      <div class="prp">$360<span>/mo</span></div>
+      <div class="pra">ARR ~$4,320</div>
+      <div class="prf"><span class="pd"></span>30 active agents</div>
+      <div class="prf"><span class="pd"></span>50 recordings/agent</div>
+      <div class="prf"><span class="pd"></span>90 queries/agent</div>
+      <div class="prf"><span class="pd"></span>All modes + dashboard</div>
+      <div class="prper">$12 / agent</div>
+    </div>
+    <div class="prc">
+      <div class="prt">Scale</div>
+      <div class="prp">$550<span>/mo</span></div>
+      <div class="pra">ARR ~$6,600</div>
+      <div class="prf"><span class="pd"></span>50 active agents</div>
+      <div class="prf"><span class="pd"></span>60 recordings/agent</div>
+      <div class="prf"><span class="pd"></span>120 queries/agent</div>
+      <div class="prf"><span class="pd"></span>All modes + priority</div>
+      <div class="prper">$11 / agent</div>
+    </div>
+  </div>
+  <div class="mr">
+    <div class="mb"><div class="mv">85%+</div><p>Gross margin — Haiku 4.5 + Sonnet 4.6 via Anthropic API</p></div>
+    <div class="mb"><div class="mv">~1M</div><p>Target companies in LATAM (10–50 employees, digital infrastructure)</p></div>
+    <div class="mb"><div class="mv">&lt;3 mo</div><p>Payback period — low CAC, land-and-expand built-in</p></div>
+  </div>
+</div></div></div>
+
+<footer>
+  <span class="fl">ORGANA</span>
+  <p class="ft">Power to people. Wisdom in-house.</p>
+  <p class="fm">Built with Claude by Anthropic · Hackathon 2026 · <a href="https://organa.zent-agency.com" target="_blank">organa.zent-agency.com</a></p>
+</footer>
+
+</body>
+</html>
